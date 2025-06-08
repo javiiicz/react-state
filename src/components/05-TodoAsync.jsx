@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import cointoss from '../utils/cointoss'
 
 const URL = 'http://localhost:9009/api/todos'
-const API_KEY = import.meta.env.VITE_API_KEY
+const API_KEY = import.meta.env.VITE_API_KEY // add .env file at the root
 
 export default function Todo() {
   const [todoList, setTodoList] = useState([])

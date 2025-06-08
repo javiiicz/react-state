@@ -45,7 +45,7 @@ export default function Todo() {
   }
   return (
     <div className="container">
-      <h2>Todo</h2>
+      <h2>Todo Async</h2>
       <div>
         {
           todoList.map(todo => {

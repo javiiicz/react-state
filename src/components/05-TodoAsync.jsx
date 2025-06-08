@@ -8,7 +8,7 @@ export default function Todo() {
   const [todoList, setTodoList] = useState([])
 
   useEffect(() => {
-    async function foo() {
+    async function asyncFunc() { // wish to await for things inside
       try {
         const result = await cointoss()
         console.log(result)
@@ -17,7 +17,7 @@ export default function Todo() {
         console.log('embarrasing but should not crash app')
       }
     }
-    foo()
+    asyncFunc()
   }, [])
 
   useEffect(() => {

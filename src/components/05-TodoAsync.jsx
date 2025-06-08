@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import cointoss from '../utils/cointoss'
 
+const URL = 'http://localhost:9009/api/todos'
+const API_KEY = import.meta.env.VITE_API_KEY
+
 export default function Todo() {
   const [todoList, setTodoList] = useState([])
 
@@ -19,7 +22,7 @@ export default function Todo() {
 
   useEffect(() => {
     async function fetchTodos() {
-      const res = await fetch('http://localhost:9009/api/todos')
+      const res = await fetch(URL)
       const parsed = await res.json()
       setTodoList(parsed)
     }
@@ -28,8 +31,12 @@ export default function Todo() {
 
   const onDone = id => evt => {
     async function deleteTodo() {
-      const res = await fetch(`http://localhost:9009/api/todos/${id}`, {
+      const res = await fetch(`${URL}/${id}`, {
         method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${API_KEY}`
+        }
       })
       const parsed = await res.json()
       setTodoList(parsed)

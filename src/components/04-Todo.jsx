@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 const todos = [
   { id: 1, label: "Refactor the refactor of the refactor", completed: false },
   { id: 2, label: "Convince rubber duck I'm not the problem", completed: false },
@@ -8,21 +9,15 @@ const todos = [
 ]
 
 export default function Todo() {
-  const [todoList, setTodoList] = useState(todos)
-  const onDone = idToDelete => () => {
-    setTodoList(oldTodos => {
-      return oldTodos.filter(todo => todo.id !== idToDelete)
-    })
-  }
   return (
     <div className="container">
       <h2>Todo</h2>
       <div>
         {
-          todoList.map(todo => {
+          todos.map(todo => {
             return (
               <ul key={todo.id}>
-                <li>{todo.label} <button onClick={onDone(todo.id)}>Done!</button></li>
+                <li>todo label <button>Done!</button></li>
               </ul>
             )
           })
